@@ -200,82 +200,216 @@ quadrantChart
     quadrant-3 Niche Players
     quadrant-4 Visionaries
     
-    Cash Snap AI: [0.9, 0.95]
-    CRED: [0.7, 0.8]
-    Paytm: [0.6, 0.7]
+    Cash Snap AI: [0.57, 0.8]
     ET Money: [0.5, 0.6]
     Walnut: [0.4, 0.5]
     Manual Apps: [0.2, 0.3]
 ```
 
 ---
-
 ## 🛠️ **Implementation Guide: Complete Google Integration Setup**
 
-*(Implementation guide content remains unchanged for brevity)*
+### **Phase 1: Google Cloud Platform Setup**
 
----
+#### **Step 1: Create Google Cloud Project**
+```bash
+# 1. Go to Google Cloud Console
+https://console.cloud.google.com
 
-## 📊 **Business Model & Monetization Strategy**
-
-### **Revenue Streams**
-
-```mermaid
-graph TD
-    A[Cash Snap AI Revenue Model] --> B[Freemium SaaS]
-    A --> C[Premium Features]
-    A --> D[B2B Enterprise]
-    A --> E[Financial Product Referrals]
-    
-    B --> F[Free: 50 receipts/month]
-    B --> G[Pro: ₹99/month - Unlimited]
-    
-    C --> H[Advanced Analytics: ₹199/month]
-    C --> I[Tax Optimization: ₹299/month]
-    C --> J[Investment Advisory: ₹499/month]
-    
-    D --> K[Business Dashboard: ₹999/month]
-    D --> L[GST Compliance Suite: ₹1999/month]
-    
-    E --> M[Mutual Fund Commissions: 0.5%]
-    E --> N[Credit Card Referrals: ₹500/approval]
-    E --> O[Insurance Referrals: 5-10%]
+# 2. Create New Project
+PROJECT_NAME="cashsnap-ai-production"
+PROJECT_ID="cashsnap-ai-prod-2024"
 ```
 
-### **Financial Projections (5-Year)**
-
-| **Year** | **Users** | **ARPU** | **Revenue** | **Costs** | **Profit** |
-|----------|-----------|----------|-------------|-----------|------------|
-| 2024 | 10,000 | ₹1,200 | ₹1.2 Cr | ₹2 Cr | -₹0.8 Cr |
-| 2025 | 100,000 | ₹1,500 | ₹15 Cr | ₹8 Cr | ₹7 Cr |
-| 2026 | 500,000 | ₹1,800 | ₹90 Cr | ₹25 Cr | ₹65 Cr |
-| 2027 | 1,500,000 | ₹2,000 | ₹300 Cr | ₹60 Cr | ₹240 Cr |
-| 2028 | 3,000,000 | ₹2,200 | ₹660 Cr | ₹100 Cr | ₹560 Cr |
-
----
-
-## 🎯 **Go-to-Market Strategy**
-
-### **Phase 1: Urban Professional Launch (Months 1-6)**
-
-```mermaid
-gantt
-    title Go-to-Market Timeline
-    dateFormat  YYYY-MM-DD
-    section Phase 1: Urban Launch
-    Product Development     :done, dev1, 2024-01-01, 2024-03-31
-    Beta Testing           :done, beta1, 2024-02-01, 2024-04-30
-    Mumbai/Delhi Launch    :active, launch1, 2024-04-01, 2024-06-30
-    
-    section Phase 2: Scale
-    Tier-1 Cities         :scale1, 2024-05-01, 2024-09-30
-    B2B Pilot Programs    :b2b1, 2024-07-01, 2024-10-31
-    
-    section Phase 3: Expansion  
-    Tier-2 Cities         :expand1, 2024-10-01, 2025-03-31
-    Enterprise Solutions  :enterprise1, 2024-11-01, 2025-06-30
+#### **Step 2: Enable Required APIs**
+```bash
+# Enable these APIs in your GCP project:
+gcloud services enable walletobjects.googleapis.com
+gcloud services enable aiplatform.googleapis.com
+gcloud services enable firebase.googleapis.com
+gcloud services enable identitytoolkit.googleapis.com
 ```
 
+### **Phase 2: Firebase Configuration**
+
+#### **Step 1: Firebase Project Setup**
+```mermaid
+graph LR
+    A[Create Firebase Project] --> B[Enable Authentication]
+    B --> C[Setup Cloud Firestore]
+    C --> D[Configure Storage Rules]
+    D --> E[Generate Service Account]
+    
+    style A fill:#ff6b35,stroke:#f7931e,stroke-width:2px,color:#fff
+```
+
+#### **Step 2: Security Rules Configuration**
+```javascript
+// Firestore Security Rules
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Users can only access their own data
+    match /users/{userId} {
+      allow read, write: if request.auth != null && request.auth.uid == userId;
+      
+      // Transactions subcollection
+      match /transactions/{transactionId} {
+        allow read, write: if request.auth != null && request.auth.uid == userId;
+      }
+    }
+  }
+}
+```
+
+### **Phase 3: Google Wallet Integration**
+
+#### **Step 1: Wallet Objects API Setup**
+```python
+# Service Account Setup for Google Wallet
+import json
+from google.oauth2 import service_account
+from google.auth.transport.requests import Request
+
+# 1. Create Service Account
+# Go to IAM & Admin > Service Accounts
+# Create new service account with name: "cashsnap-wallet-service"
+
+# 2. Assign Roles
+REQUIRED_ROLES = [
+    "roles/walletobjects.admin",
+    "roles/firebase.admin",
+    "roles/iam.serviceAccountUser"
+]
+
+# 3. Generate and Download JSON Key
+SERVICE_ACCOUNT_FILE = "path/to/service-account-key.json"
+```
+
+#### **Step 2: Wallet Console Configuration**
+```bash
+# 1. Go to Google Wallet Console
+https://pay.google.com/business/console
+
+# 2. Create Issuer Account
+ISSUER_NAME="Cash Snap AI"
+ISSUER_EMAIL="wallet@cashsnap.ai"
+
+# 3. Get Issuer ID (Format: 3388000000022959328)
+ISSUER_ID="your_issuer_id_here"
+
+# 4. Create Pass Class
+CLASS_ID="${ISSUER_ID}.cashsnap_receipt_class"
+```
+
+### **Phase 4: Gemini AI Integration**
+
+#### **Step 1: API Key Generation**
+```python
+# 1. Go to Google AI Studio
+https://makersuite.google.com/app/apikey
+
+# 2. Generate API Key
+GEMINI_API_KEY="your_gemini_api_key_here"
+
+# 3. Configure Model Settings
+MODEL_CONFIG = {
+    "model": "gemini-2.5-pro",
+    "temperature": 0.1,  # Lower for consistent financial data
+    "top_p": 0.8,
+    "top_k": 40,
+    "max_output_tokens": 2048
+}
+```
+
+#### **Step 2: Receipt Analysis Prompt Engineering**
+```python
+RECEIPT_ANALYSIS_PROMPT = """
+You are a financial AI assistant specialized in Indian receipt analysis.
+Extract the following information in JSON format:
+
+REQUIRED FIELDS:
+- date: ISO format (YYYY-MM-DD)
+- merchant: Store/business name
+- total: Final amount paid (number only)
+- subtotal: Amount before tax (number only)
+- gst: GST amount if mentioned (number only, 0 if not found)
+- tax: Other taxes (number only, 0 if not found)
+- items: Array of {name, quantity, unit_price, total_price}
+- category: One of [groceries, restaurant, shopping, utilities, transport, entertainment, healthcare, other]
+- payment_method: One of [cash, card, digital, upi]
+
+SPECIAL INSTRUCTIONS:
+- Handle Hindi/regional language text
+- Recognize Indian currency symbols (₹, Rs, INR)
+- Identify GST @5%, @12%, @18%, @28%
+- Extract GSTIN if present
+- Handle handwritten receipts
+- Deal with poor image quality
+
+Return ONLY valid JSON, no explanations.
+"""
+```
+
+### **Phase 5: Advanced AI Features Implementation**
+
+#### **Step 1: Financial Advisory AI System**
+```python
+FINANCIAL_ADVISOR_SYSTEM_PROMPT = """
+You are an AI financial advisor combining wisdom from:
+- Warren Buffett: Long-term thinking, compound growth
+- Ramit Sethi: Automation, psychology of money
+- Dave Ramsey: Debt elimination, emergency funds  
+- Robert Kiyosaki: Assets vs liabilities
+- Suze Orman: Women & money, emergency preparedness
+- Rachana Ranade: Indian market context, tax optimization
+
+ANALYSIS FRAMEWORK:
+1. Income vs Expenses (50/30/20 rule)
+2. Needs vs Wants categorization
+3. Asset-building opportunities
+4. Debt optimization strategies
+5. Emergency fund adequacy
+6. Investment diversification
+7. Tax-saving opportunities (80C, 80D, etc.)
+8. Behavioral spending patterns
+
+Provide actionable, India-specific advice in conversational tone.
+"""
+```
+
+#### **Step 2: Spending Pattern Recognition**
+```python
+def analyze_spending_patterns(transactions, user_profile):
+    """
+    Advanced spending pattern analysis using ML
+    """
+    patterns = {
+        "emotional_spending": detect_emotional_triggers(transactions),
+        "recurring_subscriptions": find_subscription_patterns(transactions),
+        "seasonal_variations": analyze_seasonal_spending(transactions),
+        "peer_comparison": benchmark_against_peers(user_profile),
+        "optimization_opportunities": find_savings_opportunities(transactions)
+    }
+    return patterns
+
+def detect_emotional_triggers(transactions):
+    """
+    Identify spending patterns that indicate emotional purchasing
+    """
+    triggers = []
+    
+    # Weekend splurges
+    weekend_spending = filter_weekend_transactions(transactions)
+    if weekend_spending['avg'] > weekday_spending['avg'] * 1.5:
+        triggers.append("weekend_splurging")
+    
+    # Stress spending (multiple small transactions in short time)
+    stress_patterns = detect_rapid_spending_sequences(transactions)
+    triggers.extend(stress_patterns)
+    
+    return triggers
+```
 ---
 
 ## 📺 **Demo Available**
@@ -288,59 +422,59 @@ Built for Google Agentic AI Day, 26-27 July 2025, Bangalore by Hack2Skill.
 
 ### Image Upload
 <div align="center">
-  <img src="static/1.png" alt="Image Upload 1" width="200">
-  <img src="static/2.png" alt="Image Upload 2" width="200">
-  <img src="static/3.png" alt="Image Upload 3" width="200">
-  <img src="static/4.png" alt="Image Upload 4" width="200">
+  <img src="static/1.png" alt="Image Upload 1" width="400">
+  <img src="static/2.png" alt="Image Upload 2" width="400">
+  <img src="static/3.png" alt="Image Upload 3" width="400">
+  <img src="static/4.png" alt="Image Upload 4" width="400">
 </div>
 
 ### Transaction Log & Wallet Add
 <div align="center">
-  <img src="static/5.png" alt="Transaction Log & Wallet Add" width="200">
+  <img src="static/5.png" alt="Transaction Log & Wallet Add" width="400">
 </div>
 
 ### Dashboard
 <div align="center">
-  <img src="static/6.png" alt="Dashboard" width="200">
+  <img src="static/6.png" alt="Dashboard" width="400">
 </div>
 
 ### Cash Snap AI
 <div align="center">
-  <img src="static/7.png" alt="Cash Snap AI" width="200">
+  <img src="static/7.png" alt="Cash Snap AI" width="400">
 </div>
 
 ### User Profile
 <div align="center">
-  <img src="static/9.png" alt="User Profile" width="200">
+  <img src="static/9.png" alt="User Profile" width="400">
 </div>
 
 ### Transaction History
 <div align="center">
-  <img src="static/10.png" alt="Transaction History" width="200">
+  <img src="static/10.png" alt="Transaction History" width="400">
 </div>
 
 ### GST Transaction
 <div align="center">
-  <img src="static/11.png" alt="GST Transaction" width="200">
+  <img src="static/11.png" alt="GST Transaction" width="400">
 </div>
 
 ### Spending Analysis
 <div align="center">
-  <img src="static/12.png" alt="Spending Analysis 1" width="200">
-  <img src="static/13.png" alt="Spending Analysis 2" width="200">
-  <img src="static/14.png" alt="Spending Analysis 3" width="200">
-  <img src="static/15.png" alt="Spending Analysis 4" width="200">
-  <img src="static/16.png" alt="Spending Analysis 5" width="200">
-  <img src="static/17.png" alt="Spending Analysis 6" width="200">
-  <img src="static/18.png" alt="Spending Analysis 7" width="200">
-  <img src="static/19.png" alt="Spending Analysis 8" width="200">
-  <img src="static/20.png" alt="Spending Analysis 9" width="200">
+  <img src="static/12.png" alt="Spending Analysis 1" width="400">
+  <img src="static/13.png" alt="Spending Analysis 2" width="400">
+  <img src="static/14.png" alt="Spending Analysis 3" width="400">
+  <img src="static/15.png" alt="Spending Analysis 4" width="400">
+  <img src="static/16.png" alt="Spending Analysis 5" width="400">
+  <img src="static/17.png" alt="Spending Analysis 6" width="400">
+  <img src="static/18.png" alt="Spending Analysis 7" width="400">
+  <img src="static/19.png" alt="Spending Analysis 8" width="400">
+  <img src="static/20.png" alt="Spending Analysis 9" width="400">
 </div>
 
 ### Advanced Spending Optimization (AI-Inspired by Financial Gurus)
 <div align="center">
-  <img src="static/21.png" alt="Advanced Spending Optimization 1" width="200">
-  <img src="static/22.png" alt="Advanced Spending Optimization 2" width="200">
+  <img src="static/21.png" alt="Advanced Spending Optimization 1" width="400">
+  <img src="static/22.png" alt="Advanced Spending Optimization 2" width="400">
 </div>
 
 ---
