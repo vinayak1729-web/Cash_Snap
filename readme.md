@@ -171,17 +171,6 @@ sequenceDiagram
 
 ## 🎯 **Market Analysis: The Untapped Opportunity**
 
-### **Total Addressable Market (TAM)**
-
-```mermaid
-pie title India's Financial Management Market (2024)
-    "Digital Transaction Users" : 65
-    "Manual Trackers" : 20
-    "No Tracking" : 15
-    
-    %%{init: {'pie': {'textPosition': 0.75}, 'theme':'base', 'themeVariables': {'primaryColor': '#ff6b6b', 'primaryTextColor': '#fff', 'primaryBorderColor': '#ee5a52', 'lineColor': '#fff', 'secondaryColor': '#4ecdc4', 'tertiaryColor': '#45b7b8'}}}%%
-```
-
 #### **Market Sizing Breakdown:**
 
 | **Segment** | **Size** | **Revenue Potential** | **Cash Snap AI Fit** |
