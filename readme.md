@@ -1,17 +1,30 @@
-
-# 💰 Cash Snap AI: Transforming Personal Finance Through AI-Powered Receipt Management
-
 <div align="center">
-
-![Cash Snap AI Banner](https://img.shields.io/badge/Cash%20Snap%20AI-Revolutionizing%20Personal%20Finance-blue?style=for-the-badge&logo=google-wallet)
-
-**A Google AI-Powered Solution for the 900M+ Indians Struggling with Financial Record Management**
-
-[![Research Grade](https://img.shields.io/badge/Research-Grade%20Analysis-gold?style=flat-square)](README.md)
-[![Market Validated](https://img.shields.io/badge/Market-Validated%20Solution-green?style=flat-square)](README.md)
-[![Google Powered](https://img.shields.io/badge/Google%20AI-Powered-red?style=flat-square&logo=google)](README.md)
-
+  <img src="static/cash-snap.png" alt="Cash Snap - Spending Analysis" width="400" />
 </div>
+
+<h2 align="center">
+  Transforming Personal Finance Through AI-Powered Receipt Management
+</h2>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Cash%20Snap%20AI-Revolutionizing%20Personal%20Finance-blue?style=for-the-badge&logo=google-wallet" alt="Cash Snap AI Banner" />
+</p>
+
+<p align="center">
+  <strong>A Google AI-Powered Solution for the 900M+ Indians Struggling with Financial Record Management</strong>
+</p>
+
+<p align="center">
+  <a href="README.md">
+    <img src="https://img.shields.io/badge/Research-Grade%20Analysis-gold?style=flat-square" alt="Research Grade" />
+  </a>
+  <a href="README.md">
+    <img src="https://img.shields.io/badge/Market-Validated%20Solution-green?style=flat-square" alt="Market Validated" />
+  </a>
+  <a href="README.md">
+    <img src="https://img.shields.io/badge/Google%20AI-Powered-red?style=flat-square&logo=google" alt="Google Powered" />
+  </a>
+</p>
 
 ---
 
@@ -118,54 +131,13 @@ graph LR
 
 ## 🏗️ **Technical Architecture: Google-Powered Innovation**
 
-### **System Design Philosophy**
+### **Architecture**
 
-```mermaid
-graph TB
-    subgraph "User Layer"
-        A[📱 Mobile/Web Interface]
-        B[🎙️ Voice Commands]
-        C[📸 Camera Integration]
-    end
-    
-    subgraph "AI Processing Layer"
-        D[🧠 Gemini 2.5 Pro]
-        E[🔍 Computer Vision]
-        F[🗣️ NLP Processing]
-        G[📊 Financial Analysis AI]
-    end
-    
-    subgraph "Google Cloud Infrastructure"
-        H[🏦 Google Wallet API]
-        I[🔥 Firebase Realtime DB]
-        J[☁️ Cloud Storage]
-        K[🔐 Identity & Access Management]
-    end
-    
-    subgraph "Intelligence Layer"
-        L[💡 Spending Pattern AI]
-        M[📈 Predictive Analytics]
-        N[🎯 Personalization Engine]
-        O[⚠️ Alert System]
-    end
-    
-    A --> D
-    B --> F
-    C --> E
-    D --> H
-    E --> I
-    F --> J
-    G --> K
-    
-    H --> L
-    I --> M
-    J --> N
-    K --> O
-    
-    style D fill:#ea4335,stroke:#d33b2c,stroke-width:2px,color:#fff
-    style H fill:#4285f4,stroke:#3367d6,stroke-width:2px,color:#fff
-    style I fill:#ff6d00,stroke:#e65100,stroke-width:2px,color:#fff
-```
+<div align="center">
+
+  <img src="static/Cash_snap _ Architechture.png" alt="Architecture" >
+</div>
+
 
 ### **AI-Powered Receipt Processing Pipeline**
 
