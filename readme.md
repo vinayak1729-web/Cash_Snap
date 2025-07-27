@@ -1,14 +1,19 @@
 <div align="center">
   <img src="static/cash-snap.png" alt="Cash Snap - Spending Analysis" width="400" />
+  <div align="center">
+  
+  <a href="https://cash-snap-service-534892414821.us-central1.run.app/" target="_blank">
+    <img src="https://img.shields.io/badge/Try-Web%20App-blue?style=for-the-badge&logo=google-chrome" alt="Try Web App" />
+  </a>
 </div>
 
 <h2 align="center">
   Transforming Personal Finance Through AI-Powered Receipt Management
+ 
+</div>
+
 </h2>
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Cash%20Snap%20AI-Revolutionizing%20Personal%20Finance-blue?style=for-the-badge&logo=google-wallet" alt="Cash Snap AI Banner" />
-</p>
 
 <p align="center">
   <strong>A Google AI-Powered Solution for the 900M+ Indians Struggling with Financial Record Management</strong>
@@ -25,6 +30,7 @@
     <img src="https://img.shields.io/badge/Google%20AI-Powered-red?style=flat-square&logo=google" alt="Google Powered" />
   </a>
 </p>
+
 
 ---
 
@@ -511,21 +517,7 @@ ADVANCED_FEATURES = {
 }
 ```
 
-#### **2. Scalability & Performance**
-```mermaid
-graph LR
-    A[Current: 10K Users] --> B[Target: 1M Users]
-    
-    B --> C[Infrastructure Scaling]
-    B --> D[AI Model Optimization]
-    B --> E[Real-time Processing]
-    
-    C --> F[Multi-region Deployment]
-    D --> G[Edge Computing Integration]
-    E --> H[Stream Processing Pipeline]
-```
-
-### **Innovation Pipeline (Next 18 Months)**
+### **Innovation Pipeline**
 
 | **Quarter** | **Innovation Focus** | **Expected Impact** |
 |-------------|---------------------|-------------------|
@@ -536,37 +528,6 @@ graph LR
 | Q4 2025 | AI financial health scoring | Personalized financial wellness |
 
 ---
-
-## 📈 **Success Metrics & KPIs**
-
-### **Product Metrics**
-
-#### **User Engagement**
-```mermaid
-graph LR
-    A[Daily Active Users] --> B[Receipt Upload Frequency]
-    B --> C[AI Query Interactions]
-    C --> D[Google Wallet Pass Usage]
-    D --> E[Financial Goal Achievement]
-    
-    A --> F[85% Weekly Retention]
-    B --> G[15 Receipts/User/Month]
-    C --> H[8 AI Queries/User/Month]
-    D --> I[70% Pass Utilization]
-    E --> J[60% Goal Completion Rate]
-```
-
-#### **Business Impact Metrics**
-
-| **Metric** | **Current** | **6M Target** | **12M Target** |
-|------------|-------------|---------------|----------------|
-| **Monthly Active Users** | 5,000 | 50,000 | 200,000 |
-| **Revenue per User** | ₹100 | ₹150 | ₹200 |
-| **Customer Acquisition Cost** | ₹200 | ₹150 | ₹120 |
-| **Lifetime Value** | ₹1,200 | ₹2,400 | ₹4,800 |
-| **Churn Rate** | 15% | 8% | 5% |
-| **Net Promoter Score** | 45 | 65 | 75 |
-
 ### **Financial Impact on Users**
 
 #### **Average User Savings Through Cash Snap AI**
@@ -584,50 +545,6 @@ pie title Monthly Savings Breakdown (Average User)
 - **GST Recovery**: ₹800/month average  
 - **Time Savings**: 12 hours/month
 - **Financial Stress Reduction**: 45% improvement (measured via surveys)
-
----
-
-## 🚀 **Implementation Checklist**
-
-### **Technical Setup (Week 1-2)**
-- [ ] Create Google Cloud Project
-- [ ] Enable Wallet Objects API
-- [ ] Setup Firebase project with authentication
-- [ ] Configure Firestore database with security rules
-- [ ] Generate and configure service account keys
-- [ ] Setup Gemini AI API access
-- [ ] Implement receipt processing pipeline
-- [ ] Create Google Wallet pass templates
-
-### **Development (Week 3-6)**
-- [ ] Build multimodal receipt analysis system
-- [ ] Integrate Google Wallet API for pass creation
-- [ ] Develop financial analytics dashboard
-- [ ] Implement AI-powered financial advisory system
-- [ ] Create user authentication and profile management
-- [ ] Build spending optimization algorithms
-- [ ] Develop notification and alert systems
-- [ ] Setup automated testing pipeline
-
-### **Testing & Validation (Week 7-8)**
-- [ ] Unit testing for all components
-- [ ] Integration testing with Google services
-- [ ] User acceptance testing with beta users
-- [ ] Performance testing for scalability
-- [ ] Security audit and penetration testing
-- [ ] Load testing for concurrent users
-- [ ] Mobile responsiveness testing
-- [ ] Cross-browser compatibility testing
-
-### **Launch Preparation (Week 9-10)**
-- [ ] Production environment setup
-- [ ] Domain and SSL certificate configuration
-- [ ] Analytics and monitoring setup
-- [ ] Customer support system implementation
-- [ ] Documentation and user guides
-- [ ] Marketing website development
-- [ ] App store submissions (if applicable)
-- [ ] Legal compliance review
 
 ---
 
